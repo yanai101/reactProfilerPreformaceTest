@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@property --ang {
+  syntax: "<angle>"; /* <- defined as type number for the transition to work */
+  initial-value: 0deg;
+  inherits: false;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+:root {
+  --ang: 0;
+}
+
+.box-app {
+  display: flex;
+  width: 70vw;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  background: repeating-conic-gradient(from var(--ang) at 50% 50%, hsl(90, 100%, 50%) 0deg 15deg, hsl(200, 95%, 50%) 10deg 30deg);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: rgba(0 0 0 / 1) 0px 0px 5px;
+  animation: spin 23s linear infinite reverse;
+}
+
+.box.active {
+  background: repeating-conic-gradient(from var(--ang) at 50% 50%, hsl(275, 100%, 50%) 0deg 15deg, hsl(60, 100%, 60%) 10deg 30deg);
+}
+
+@keyframes spin {
+  to {
+    --ang: 0deg;
+  }
+  to {
+    --ang: 360deg;
+  }
+}
