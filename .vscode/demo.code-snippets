@@ -1,0 +1,66 @@
+{
+	"performance 1": {
+		"prefix": "demo1",
+		"description": "",
+		"body": [
+			"import AppProfiler from './AppProfiler';",
+			"",
+			"",
+			"function App() {",
+			"    return (",
+			"      <div className=\"App\">",
+			"        <AppProfiler/>",
+			"      </div>",
+			"    );",
+			"}",
+			"",
+			"",
+			"",
+			"export default App;"
+		]
+	},
+	"performance 2": {
+		"prefix": "demo2",
+		"description": "",
+		"body": [
+			"const initData = Array.from(Array(16),(x,id)=>({id,active: false}));",
+			"",
+			"const Box = ({onClick , active , index , children})=>{",
+			"",
+			"  const handelClick = ()=>{",
+			"    onClick(index);",
+			"  }",
+			"",
+			"  console.log(`box ${index} rendered`);",
+			"",
+			"  return (",
+			"    <div onClick={handelClick} className={active ? 'box active' : 'box'}>",
+			"        {children}",
+			"    </div>",
+			"  )",
+			"",
+			"}"
+		]
+	},
+	"performance 3": {
+		"prefix": "demo3",
+		"description": "",
+		"body": [
+			"function App() {",
+			"  const [data, setData] = useState(initData);",
+			"  ",
+			"  const handelClick = (index)=>{",
+			"    let boxes = data;",
+			"    boxes[index].active = !boxes[index].active;",
+			"    setData([...boxes])",
+			"  }",
+			"",
+			"  return (",
+			"    <div className=\"App box-app\">",
+			"      {data.map((item)=><Box active={item.active} key={item.id} index={item.id} onClick={handelClick}>{`box-number ${item.id}`}</Box>)}",
+			"    </div>",
+			"  );",
+			"}"
+		]
+	}
+}
